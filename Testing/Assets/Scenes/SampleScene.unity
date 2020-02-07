@@ -424,9 +424,9 @@ MonoBehaviour:
   firePoint: {fileID: 315534351}
   bulletPrefab: {fileID: 606559082437089, guid: 0abf634ff6194c644a86e3e7a908103e,
     type: 3}
-  startTimeBtwShots: 0.03
-  offset1: 0
-  offset2: 0
+  bulletStop: {fileID: 8809684097508320194, guid: 8c5c4b083f8c4514b920e4658b5b4d3d,
+    type: 3}
+  startTimeBtwShots: 0.1
 --- !u!1 &486532331
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,7 +971,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &713346218
 GameObject:
@@ -1118,13 +1118,14 @@ GameObject:
   m_Component:
   - component: {fileID: 724512985}
   - component: {fileID: 724512984}
+  - component: {fileID: 724512986}
   m_Layer: 0
   m_Name: Bato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &724512984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1183,12 +1184,32 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 724512983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.83, y: -0.06, z: 0}
+  m_LocalPosition: {x: 3.56, y: -0.06, z: 0}
   m_LocalScale: {x: 0.14166, y: 0.14166, z: 0.14166}
-  m_Children: []
+  m_Children:
+  - {fileID: 1153587580}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &724512986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724512983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ed081e01ce3e8d4cb7c8b4f361a34b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startinghealth: 100
+  anim: {fileID: 0}
+  healthBar: {fileID: 0}
+  EnemyDamageT: 10
+  chaseRadius: 6
+  speed: 2
+  stoppingDistance: 3
 --- !u!1 &745139564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,7 +1347,7 @@ Transform:
   m_Children:
   - {fileID: 315534351}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &841460865
 GameObject:
@@ -1514,6 +1535,56 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1153587579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1153587580}
+  - component: {fileID: 1153587581}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1153587580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153587579}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.7345934, y: 0.56927717, z: 0}
+  m_LocalScale: {x: 3.1121697, y: 3.1121697, z: 3.1121697}
+  m_Children: []
+  m_Father: {fileID: 724512985}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1153587581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153587579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9fc831c672f6874bad6e3cf3ea7ccb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0
+  firePoint: {fileID: 1153587580}
+  bulletPrefab: {fileID: 606559082437089, guid: 0abf634ff6194c644a86e3e7a908103e,
+    type: 3}
+  bulletStop: {fileID: 8809684097508320194, guid: 8c5c4b083f8c4514b920e4658b5b4d3d,
+    type: 3}
+  startTimeBtwShots: 0.1
 --- !u!1 &1187513147
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,7 +1826,7 @@ Transform:
   - {fileID: 1507950366}
   - {fileID: 296024579}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1507950364
 GameObject:
