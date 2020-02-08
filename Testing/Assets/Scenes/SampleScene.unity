@@ -427,6 +427,7 @@ MonoBehaviour:
   bulletStop: {fileID: 8809684097508320194, guid: 8c5c4b083f8c4514b920e4658b5b4d3d,
     type: 3}
   startTimeBtwShots: 0.1
+  Holder: {fileID: 0}
 --- !u!1 &486532331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,6 +1211,7 @@ MonoBehaviour:
   chaseRadius: 6
   speed: 2
   stoppingDistance: 3
+  Player: {fileID: 0}
 --- !u!1 &745139564
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,6 +1270,7 @@ MonoBehaviour:
   chaseRadius: 6
   speed: 2
   stoppingDistance: 3
+  Player: {fileID: 536564580}
 --- !u!70 &745139567
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -1585,6 +1588,7 @@ MonoBehaviour:
   bulletStop: {fileID: 8809684097508320194, guid: 8c5c4b083f8c4514b920e4658b5b4d3d,
     type: 3}
   startTimeBtwShots: 0.1
+  Holder: {fileID: 0}
 --- !u!1 &1187513147
 GameObject:
   m_ObjectHideFlags: 0

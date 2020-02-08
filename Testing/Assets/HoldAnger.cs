@@ -16,6 +16,7 @@ public class HoldAnger : MonoBehaviour
     private bool flag;
     private float secs = 1000f;
     private bool secondflag;
+    public Transform Holder;
 
     private void Start()
     {
@@ -24,12 +25,9 @@ public class HoldAnger : MonoBehaviour
     }
     void Update()
     {
-
-        Debug.Log(randomNum);
-        
                 if (flag == true)
                 {
-                    randomNum = Random.Range(1, 20 + 1);
+                    randomNum = Random.Range(1, 40 + 1);
                     if (randomNum >= 1 && randomNum <=5)
                     {
                         offset =360;
@@ -40,15 +38,32 @@ public class HoldAnger : MonoBehaviour
                     {
                         flag = false;
                     }
-            if (randomNum >= 11 && randomNum <= 15)
-            {
-                flag = false;
-            }
-            if (randomNum >= 16 && randomNum <= 20)
-            {
-                flag = false;
-            }
-        }
+                    if (randomNum >= 11 && randomNum <= 15)
+                    {
+                        flag = false;
+                    }
+                    if (randomNum >= 16 && randomNum <= 20)
+                    {
+                        flag = false;
+                    }
+                    if (randomNum >= 21 && randomNum <= 25)
+                    {
+                        flag = false;
+                    }
+                    if (randomNum >= 26 && randomNum <= 30)
+                    {
+                        flag = false;
+                    }
+                    if (randomNum >= 31 && randomNum <= 35)
+                    {
+                        flag = false;
+                    }
+                    if (randomNum >= 36 && randomNum <= 40)
+                    {
+                        flag = false;
+                    }
+                }
+
 
                     if (randomNum >= 1 && randomNum <= 5)
                     {
@@ -75,6 +90,32 @@ public class HoldAnger : MonoBehaviour
                         SpreadSer();
                         Timer();
                     }
+                    if (randomNum >= 21 && randomNum <= 25)
+                    {
+                        secs--;
+                        Spinning();
+                        Timer();
+                    }
+                    if (randomNum >= 26 && randomNum <= 30)
+                    {
+                        secs--;
+                        SpinningRev();
+                        Timer();
+                    }
+                    if (randomNum >= 31 && randomNum <= 35)
+                    {
+                        secs--;
+                        SpiralRev();
+                        Timer();
+                    }
+                    if (randomNum >= 36 && randomNum <= 40)
+                    {
+                        secs--;
+                        SpiralSerRev();
+                        Timer();
+                    }
+
+
     }
     void Timer()
     {
@@ -88,6 +129,85 @@ public class HoldAnger : MonoBehaviour
         }
     }
 
+    void SpinningRev()
+    {
+        transform.rotation = Quaternion.Euler(0f, 0f, offset);
+
+        offset++;
+
+        if (offset >= 360f)
+        {
+            offset = -360f;
+        }
+        if (timeBtwShots <= 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 30f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 60f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 90f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 120f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 150f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 180f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 210f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 240f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 270f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 300f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 330f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 360f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            timeBtwShots = startTimeBtwShots;
+        }
+        else
+            timeBtwShots -= Time.deltaTime;
+    }
+    void SpiralRev()
+    {
+        transform.rotation = Quaternion.Euler(0f, 0f, offset);
+
+        offset++;
+
+        if (offset >= 360f)
+        {
+            offset = -360f;
+        }
+
+        if (timeBtwShots <= 0)
+        {
+            Shoot();
+            timeBtwShots = startTimeBtwShots;
+        }
+        else
+            timeBtwShots -= Time.deltaTime;
+    }
+    void SpiralSerRev()
+    {
+        transform.rotation = Quaternion.Euler(0f, 0f, offset);
+
+        offset++;
+
+        if (offset >= 360f)
+        {
+            offset = -360f;
+        }
+
+        if (timeBtwShots <= 0)
+        {
+            Instantiate(bulletStop, firePoint.position, transform.rotation);
+            timeBtwShots = startTimeBtwShots;
+        }
+        else
+            timeBtwShots -= Time.deltaTime;
+    }
     void SpiralSer()
     {
         transform.rotation = Quaternion.Euler(0f, 0f, offset);
@@ -130,8 +250,8 @@ public class HoldAnger : MonoBehaviour
 
             if (timeBtwShots <= 0)
             {
-            Instantiate(bulletStop, firePoint.position, transform.rotation);
-            timeBtwShots = startTimeBtwShots;
+                Instantiate(bulletStop, firePoint.position, transform.rotation);
+                timeBtwShots = startTimeBtwShots;
             }
             else
                 timeBtwShots -= Time.deltaTime;
@@ -185,6 +305,49 @@ public class HoldAnger : MonoBehaviour
             timeBtwShots -= Time.deltaTime;
 
     }
+
+    void Spinning()
+    {
+        transform.rotation = Quaternion.Euler(0f, 0f, offset);
+
+        offset--;
+
+        if (offset <= -360f)
+        {
+            offset = 360f;
+        }
+        if (timeBtwShots <= 0)
+        {
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 30f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 60f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 90f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 120f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 150f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 180f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 210f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 240f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 270f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 300f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 330f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            transform.rotation = Quaternion.Euler(0f, 0f, offset + 360f);
+            Instantiate(bulletPrefab, firePoint.position, transform.rotation);
+            timeBtwShots = startTimeBtwShots;
+        }
+        else
+            timeBtwShots -= Time.deltaTime;
+    }
+
     void Shoot()
     {
         Instantiate(bulletPrefab, firePoint.position, transform.rotation);

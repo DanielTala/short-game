@@ -16,8 +16,9 @@ public class BossLove : MonoBehaviour
     public float chaseRadius;
     public float speed;
     public float stoppingDistance;
-
+    public Transform Player;
     private Transform target;
+    bool facingRight = true;
 
 
     void Start()
@@ -29,12 +30,22 @@ public class BossLove : MonoBehaviour
 
     void Update()
     {
+        Vector3 difference =Player.position - transform.position;   
         CheckDistance();
 
         if (health == 0)
         {
             anim.SetBool("dead", true);
             Destroy(gameObject);
+        }
+
+        if (difference.x > 0 && facingRight)
+        {
+            flip();
+        }
+        if (difference.x < 0 && !facingRight)
+        {
+            flip();
         }
     }
 
@@ -48,6 +59,11 @@ public class BossLove : MonoBehaviour
         }
     }
 
+    void flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
+    }
 
     void CheckDistance()
     {
