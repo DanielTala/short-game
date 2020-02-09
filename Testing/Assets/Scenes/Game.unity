@@ -707,7 +707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 348194486}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
@@ -927,7 +927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 419164261}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
@@ -1275,7 +1275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 486532336}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 488743181}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
@@ -1537,7 +1537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &498488468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2318,7 +2318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 654756933}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
@@ -4046,7 +4046,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 1183500592}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
@@ -4469,7 +4469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 1312139595}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
@@ -4608,7 +4608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 1325391959}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
@@ -5281,7 +5281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startinghealth: 100
   anim: {fileID: 1785289093}
-  healthBar: {fileID: 1253487528}
+  healthBar: {fileID: 0}
   EnemyDamageT: 10
   chaseRadius: 6
   speed: 2
