@@ -1,17 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-
+    public float startinghealth = 100f;
     public Rigidbody2D rb;
-
+    public Image healthBar;
     bool facingRight = true;
     public Animator anim;
     Vector2 movement;
+    private float health;
+    public float EnemyDamageT = 10f;
 
+    private void Start()
+    {
+        health = startinghealth;
+    }
     void Update()
     {
         Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -38,6 +45,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
     
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("BulletE"))
+        {
+            health = health - EnemyDamageT;
+            healthBar.fillAmount = health / startinghealth;
+        }
     }
 
     private void FixedUpdate()
