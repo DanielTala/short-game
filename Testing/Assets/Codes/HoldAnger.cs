@@ -14,9 +14,8 @@ public class HoldAnger : MonoBehaviour
     private int offset2 = 180;
     private int randomNum;
     private bool flag;
-    private float secs = 1000f;
-    private bool secondflag;
-    public Transform Holder;
+    private float secs = 500f;
+    private bool secondflag;    
 
     private void Start()
     {
@@ -124,7 +123,7 @@ public class HoldAnger : MonoBehaviour
         {
             randomNum = 0;
             flag = true;
-            secs = 1000f;
+            secs = 500f;
             offset = 0f;
         }
     }

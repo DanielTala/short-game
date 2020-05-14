@@ -7,9 +7,9 @@ public class Enemy : MonoBehaviour
     public float startinghealth = 100f;
     private float health;
 
-
+    bool facingRight = true;
+    public Transform Player;
     public Animator anim;
-    public Image healthBar;
     public float EnemyDamageT = 10f;
     public float chaseRadius;
     public float speed;
@@ -27,12 +27,21 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        Vector3 difference = Player.position - transform.position;
         CheckDistance();
 
         if (health == 0)
         {
             anim.SetBool("dead", true);
             Destroy(gameObject);
+        }
+        if (difference.x > 0 && facingRight)
+        {
+            flip();
+        }
+        if (difference.x < 0 && !facingRight)
+        {
+            flip();
         }
     }
 
@@ -42,7 +51,6 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.CompareTag("Pbullet"))
         {
             health = health - EnemyDamageT;
-            healthBar.fillAmount = health / startinghealth;
         }
     }
 
@@ -52,6 +60,14 @@ public class Enemy : MonoBehaviour
         if ((Vector2.Distance(transform.position, target.position) > stoppingDistance) && (Vector2.Distance(target.position, transform.position) <= chaseRadius))
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            anim.SetBool("run", true);
         }
+        else
+            anim.SetBool("run", false);
+    }
+    void flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 }

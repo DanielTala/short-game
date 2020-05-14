@@ -5,8 +5,6 @@ using UnityEngine;
 public class BulletAnger : MonoBehaviour
 {
     private float speed = 5f;
-    private float secs = 0f;
-    private bool flag= true;
     void Start()
     {
 

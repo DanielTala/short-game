@@ -11,7 +11,6 @@ public class BossLove : MonoBehaviour
 
 
     public Animator anim;
-    public Image healthBar;
     public float EnemyDamageT = 10f;
     public float chaseRadius;
     public float speed;
@@ -55,14 +54,7 @@ public class BossLove : MonoBehaviour
         if (collision.gameObject.CompareTag("Pbullet"))
         {
             health = health - EnemyDamageT;
-            healthBar.fillAmount = health / startinghealth;
         }
-    }
-
-    void flip()
-    {
-        facingRight = !facingRight;
-        transform.Rotate(0f, 180f, 0f);
     }
 
     void CheckDistance()
@@ -70,6 +62,14 @@ public class BossLove : MonoBehaviour
         if ((Vector2.Distance(transform.position, target.position) > stoppingDistance) && (Vector2.Distance(target.position, transform.position) <= chaseRadius))
         {
             transform.position = Vector2.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+            anim.SetBool("run", true);
         }
+        else
+            anim.SetBool("run", false);
+    }
+    void flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 }

@@ -13,8 +13,14 @@ public class PlayerMovement : MonoBehaviour
     public Animator anim;
     Vector2 movement;
     private float health;
+    public float EnemyDamageB = 10f;
     public float EnemyDamageT = 10f;
-
+    public float EnemyPoison = 1f;
+    public float secs;
+    public float slowTime;
+    public float poisonTime;
+    public bool startTime = false;
+    public bool poison = false;
     private void Start()
     {
         health = startinghealth;
@@ -44,6 +50,30 @@ public class PlayerMovement : MonoBehaviour
             flip();
         }
 
+        if (startTime == true)
+        {
+            secs++;
+            moveSpeed = 1f;
+            if (secs >= slowTime)
+            {
+                startTime = false;
+                moveSpeed = 3f;
+                secs = 0f;
+            }
+
+        if (poison == true)
+            {
+                secs++;
+                health--;
+                healthBar.fillAmount = health / startinghealth;
+                if (secs >= poisonTime)
+                {
+                    poison = false;
+                    secs = 0f;
+                }
+            }
+        }
+
     
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,8 +83,28 @@ public class PlayerMovement : MonoBehaviour
             health = health - EnemyDamageT;
             healthBar.fillAmount = health / startinghealth;
         }
+        if (collision.gameObject.CompareTag("BulletSad"))
+        {
+            health = health - EnemyDamageB;
+            timer();
+            healthBar.fillAmount = health / startinghealth;
+        }
+        if (collision.gameObject.CompareTag("BulletJoy"))
+        {
+            health = health - EnemyDamageB;
+            healthBar.fillAmount = health / startinghealth;
+        }
+        if (collision.gameObject.CompareTag("Trail"))
+        {
+            poison = true;
+        }
     }
 
+    private void timer()
+    {
+        startTime = true;
+        
+    }
     private void FixedUpdate()
     {
         
